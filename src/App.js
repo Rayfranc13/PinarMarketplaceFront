@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios'
+import { Home } from './routes/Home';
+import { Header } from "./components/Header"
+import{useState,useEffect}from 'react'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { LoguinForm } from './components/LoguinForm';
+import './App.css'
+import Footer from './components/Footer';
+import { useLogin } from './hooks/useLogin';
+
 
 function App() {
+const [usuario,setUsuario]=useState(null)
+
+const handleUsuario=(user)=>{
+  setUsuario(user)
+}
+
+
+useEffect(()=>{
+ const token=localStorage.getItem('token')
+  if(token){
+    axios.get(`http://${process.env.BACK_URL}:4000/usuario/perfil`,{
+      headers: {
+        'token': token
+      }}).then(res=>{
+        const tempuser=res.data
+        setUsuario(tempuser)
+      })
+    .catch(e=>console.log(e))
+  }
+},)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header usuario={usuario}/>
+    <Routes>
+        <Route path="/auth/login" element={<LoguinForm/>} />
+        <Route path="/" element={<Home />}/>
+      </Routes>
+      <Footer/>
     </div>
   );
 }

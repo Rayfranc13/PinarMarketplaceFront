@@ -1,0 +1,40 @@
+footer{
+    align-items: flex-end;
+    display: box;
+    margin: 0;
+    color: white;
+    width: 100%;
+    background-color:rgb(75, 75, 75);
+    font-size: 2vh;
+}
+
+.footer *{
+    display: flex;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.columnas{
+    text-align: center;
+}
+
+.info{
+    text-align: center;
+}
+
+.info-item{
+max-width: 400px;
+margin: 0 auto;
+}
+
+.lista{
+    text-align: start;
+    padding-left: 40px;
+}
+
+.firma{
+    background-color: rgb(41, 41, 41);
+    height: 40px;
+    position: relative;
+    margin: 0;
+}
