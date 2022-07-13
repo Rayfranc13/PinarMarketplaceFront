@@ -20,7 +20,7 @@ const handleUsuario=(user)=>{
 useEffect(()=>{
  const token=localStorage.getItem('token')
   if(token){
-    axios.get(`http://${process.env.BACK_URL}:4000/usuario/perfil`,{
+    axios.get(`${process.env.BACK_URL}/usuario/perfil`,{
       headers: {
         'token': token
       }}).then(res=>{

@@ -11,7 +11,7 @@ export function Home(){
     const getProductos= ()=>{
        const prod= new Promise(async(resolve,reject)=>{
             
-            const productos= await axios.get(`http://${process.env.BACK_URL}:4000/producto`,{
+            const productos= await axios.get(`${process.env.BACK_URL}/producto`,{
                 headers:{
                     "token":localStorage.getItem("token")
                 }

@@ -25,7 +25,7 @@ export const LoguinForm=()=>{
       const correo=document.getElementById('validationCustom01').value
     const password=document.getElementById('validationCustom02').value
     try{
-    const {data:{token}} =await axios.post(`http://${process.env.BACK_URL}:4000/auth/login`,{correo,password},{
+    const {data:{token}} =await axios.post(`${process.env.BACK_URL}/auth/login`,{correo,password},{
       headers:{
         "content-type":'application/json'
       }
